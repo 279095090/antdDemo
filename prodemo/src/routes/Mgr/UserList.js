@@ -46,7 +46,7 @@ const columns = [
   },
   {
     title: '创建时间',
-    dataIndex: 'createAt',
+    dataIndex: 'createdAt',
     sorter: true,
     render: val => <span>{moment(val).format('YYYY-MM-DD HH:mm:ss')}</span>,
   },
@@ -67,9 +67,9 @@ const columns = [
   },
 ];
 
-@connect(({ rule, loading }) => ({
-  rule,
-  loading: loading.models.rule,
+@connect(({ usermgr, loading }) => ({
+  usermgr,
+  loading: loading.models.usermgr,
 }))
 @Form.create()
 export default class UserList extends PureComponent {
@@ -83,7 +83,7 @@ export default class UserList extends PureComponent {
   componentDidMount() {
     const { dispatch } = this.props;
     dispatch({
-      type: 'rule/fetch',
+      type: 'usermgr/query',
     });
   }
 
@@ -108,7 +108,7 @@ export default class UserList extends PureComponent {
     }
 
     dispatch({
-      type: 'rule/fetch',
+      type: 'usermgr/query',
       payload: params,
     });
   }
@@ -120,7 +120,7 @@ export default class UserList extends PureComponent {
       formValues: {},
     });
     dispatch({
-      type: 'rule/fetch',
+      type: 'usermgr/query',
       payload: {},
     });
   }
@@ -140,7 +140,7 @@ export default class UserList extends PureComponent {
     switch (e.key) {
       case 'remove':
         dispatch({
-          type: 'rule/remove',
+          type: 'uesrmgr/remove',
           payload: {
             no: selectedRows.map(row => row.userCode).join(','),
           },
@@ -180,7 +180,7 @@ export default class UserList extends PureComponent {
       });
 
       dispatch({
-        type: 'rule/fetch',
+        type: 'usermgr/query',
         payload: values,
       });
     });
@@ -307,7 +307,7 @@ export default class UserList extends PureComponent {
   }
 
   render() {
-    const { rule: { data }, loading } = this.props;
+    const { usermgr: { users }, loading } = this.props;
     const { selectedRows, modalVisible } = this.state;
 
     const menu = (
@@ -349,7 +349,7 @@ export default class UserList extends PureComponent {
             <StandardTable
               selectedRows={selectedRows}
               loading={loading}
-              data={data}
+              data={users}
               columns={columns}
               onSelectRow={this.handleSelectRows}
               onChange={this.handleStandardTableChange}

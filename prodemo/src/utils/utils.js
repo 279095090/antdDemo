@@ -148,7 +148,7 @@ export function getRoutes(path, routerData) {
       exact,
     };
   });
-  console.log(renderRoutes);
+  //console.log(renderRoutes);
   return renderRoutes;
 }
 

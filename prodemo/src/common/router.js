@@ -164,7 +164,7 @@ export const getRouterData = (app) => {
       component: dynamicWrapper(app, [], () => import('../routes/List/Hello')),
     },
     '/mgr/user': {
-      component: dynamicWrapper(app, [], () => import('../routes/Mgr/UserList')),
+      component: dynamicWrapper(app, ['usermgr'], () => import('../routes/Mgr/UserList')),
     },
     '/mgr/newuser': {
       name:'添加用户',

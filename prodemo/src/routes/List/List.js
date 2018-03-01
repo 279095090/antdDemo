@@ -50,7 +50,7 @@ export default class SearchList extends Component {
 
     const { match, routerData, location } = this.props;
 
-    console.log(`match->${JSON.stringify(match)};routerData->${JSON.stringify(routerData)}`)
+    //console.log(`match->${JSON.stringify(match)};routerData->${JSON.stringify(routerData)}`)
     const routes = getRoutes(match.path, routerData);
 
     return (
