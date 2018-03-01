@@ -113,7 +113,29 @@ const menuData = [{
     name: '注册结果',
     path: 'register-result',
   }],
-}];
+},
+  {
+    name: 'Hello',
+    icon: 'user',
+    path: 'hello'    
+  },
+  {
+    name: '系统管理',
+    icon: 'setting',
+    path: 'mgr',
+    authority:'admin',
+    children:[
+      {
+        name:'用户管理',
+        path:'user'        
+      },
+      {
+        name:'FormDemo',
+        path:'formdemo'        
+      },
+    ]
+  }
+];
 
 function formatter(data, parentPath = '/', parentAuthority) {
   return data.map((item) => {

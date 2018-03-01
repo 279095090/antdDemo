@@ -49,6 +49,8 @@ export default class SearchList extends Component {
     );
 
     const { match, routerData, location } = this.props;
+
+    console.log(`match->${JSON.stringify(match)};routerData->${JSON.stringify(routerData)}`)
     const routes = getRoutes(match.path, routerData);
 
     return (
@@ -61,7 +63,9 @@ export default class SearchList extends Component {
       >
         <Switch>
           {
-            routes.map(item =>
+            routes
+            .filter(item => item.path !== '/list/search/projects')
+            .map(item =>
               (
                 <Route
                   key={item.key}

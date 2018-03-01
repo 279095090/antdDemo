@@ -109,6 +109,7 @@ function getRelation(str1, str2) {
 }
 
 function getRenderArr(routes) {
+  return routes;
   let renderArr = [];
   renderArr.push(routes[0]);
   for (let i = 1; i < routes.length; i += 1) {
@@ -147,6 +148,7 @@ export function getRoutes(path, routerData) {
       exact,
     };
   });
+  console.log(renderRoutes);
   return renderRoutes;
 }
 

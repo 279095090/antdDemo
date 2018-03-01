@@ -22,6 +22,7 @@ export default class LoginPage extends Component {
   }
 
   handleSubmit = (err, values) => {
+    console.log('value collected ->', { ...values, autoLogin: this.state.autoLogin });
     const { type } = this.state;
     if (!err) {
       this.props.dispatch({

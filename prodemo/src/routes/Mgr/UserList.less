@@ -1,0 +1,50 @@
+@import "~antd/lib/style/themes/default.less";
+@import "../../utils/utils.less";
+
+.userList {
+  .userListOperator {
+    margin-bottom: 16px;
+    button {
+      margin-right: 8px;
+    }
+  }
+}
+
+.userListForm {
+  :global {
+    .ant-form-item {
+      margin-bottom: 24px;
+      margin-right: 0;
+      display: flex;
+      justify-content:center;
+      > .ant-form-item-label {
+        flex:0 0 80px;
+        line-height: 32px;
+        padding-right: 8px;
+        text-align: right;
+      }
+      .ant-form-item-control {
+        line-height: 32px;
+      }
+    }
+    .ant-form-item-control-wrapper {
+      flex:2 1; 
+    }
+  }
+  .submitButtons {
+    white-space: nowrap;
+    margin-bottom: 24px;
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .userListForm :global(.ant-form-item) {
+    margin-right: 24px;
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .userListForm :global(.ant-form-item) {
+    margin-right: 8px;
+  }
+}

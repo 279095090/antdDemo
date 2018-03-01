@@ -81,7 +81,7 @@ class StandardTable extends PureComponent {
 
     return (
       <div className={styles.standardTable}>
-        <div className={styles.tableAlert}>
+        {needTotalList.length>0 && <div className={styles.tableAlert}>
           <Alert
             message={(
               <Fragment>
@@ -102,7 +102,7 @@ class StandardTable extends PureComponent {
             type="info"
             showIcon
           />
-        </div>
+        </div>}
         <Table
           loading={loading}
           rowKey={record => record.key}

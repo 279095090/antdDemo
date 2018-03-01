@@ -160,6 +160,20 @@ export const getRouterData = (app) => {
     '/user/register-result': {
       component: dynamicWrapper(app, [], () => import('../routes/User/RegisterResult')),
     },
+    '/hello': {
+      component: dynamicWrapper(app, [], () => import('../routes/List/Hello')),
+    },
+    '/mgr/user': {
+      component: dynamicWrapper(app, [], () => import('../routes/Mgr/UserList')),
+    },
+    '/mgr/newuser': {
+      name:'添加用户',
+      authority:'admin',
+      component: dynamicWrapper(app, [], () => import('../routes/Mgr/NewUser'))      
+    },
+    '/mgr/formdemo': {
+      component: dynamicWrapper(app, [], () => import('../routes/Mgr/FormDemo')),
+    },
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },
