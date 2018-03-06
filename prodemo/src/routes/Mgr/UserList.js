@@ -193,7 +193,7 @@ export default class UserList extends PureComponent {
   }
 
   handleAdd = (e) => {
-    this.props.dispatch(routerRedux.push('/mgr/newuser'));   
+    this.props.dispatch(routerRedux.push('/mgr/user/new'));   
   }
 
   renderSimpleForm() {

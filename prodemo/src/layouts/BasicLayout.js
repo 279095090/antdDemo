@@ -136,6 +136,14 @@ class BasicLayout extends React.PureComponent {
         type: 'login/logout',
       });
     }
+    if (key === 'usercenter') {
+      this.props.dispatch(routerRedux.push('/user/center'));
+      return;
+    }
+    if (key === 'setting') {
+      this.props.dispatch(routerRedux.push('/user/setting'));
+      return;
+    }
   }
   handleNoticeVisibleChange = (visible) => {
     if (visible) {
@@ -148,6 +156,13 @@ class BasicLayout extends React.PureComponent {
     const {
       currentUser, collapsed, fetchingNotices, notices, routerData, match, location,
     } = this.props;
+    const requireAuth = (nextState, replace) => {
+      debugger
+      if (!auth.isAdmin()) {
+          // Redirect to Home page if not an Admin
+          replace({ pathname: '/' })
+      }
+    }
     const bashRedirect = this.getBashRedirect();
     const layout = (
       <Layout>
@@ -199,7 +214,7 @@ class BasicLayout extends React.PureComponent {
                     />
                   )
                 )
-              }
+              }           
               <Redirect exact from="/" to={bashRedirect} />
               <Route render={NotFound} />
             </Switch>

@@ -127,7 +127,7 @@ const menuData = [{
     children:[
       {
         name:'用户管理',
-        path:'user'        
+        path:'user/list'        
       },
       {
         name:'FormDemo',

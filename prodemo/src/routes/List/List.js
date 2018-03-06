@@ -7,6 +7,10 @@ import { getRoutes } from '../../utils/utils';
 
 @connect()
 export default class SearchList extends Component {
+  componentDidMount(){
+    console.log(`SearchList mount`);
+  }
+
   handleTabChange = (key) => {
     const { dispatch, match } = this.props;
     switch (key) {

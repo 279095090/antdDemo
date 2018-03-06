@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import {Prompt} from 'dva/router';
 import moment from 'moment';
 import { connect } from 'dva';
 import { Form, Card, Select, List, Tag, Icon, Avatar, Row, Col, Button } from 'antd';
@@ -230,6 +231,9 @@ export default class SearchList extends Component {
             )}
           />
         </Card>
+        <Prompt
+          when={true}
+          message="Are you sure you want to leave?" />
       </Fragment>
     );
   }

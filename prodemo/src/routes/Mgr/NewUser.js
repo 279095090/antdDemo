@@ -2,6 +2,7 @@ import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'dva';
 import { Row, Col, Card, Form, Input, Select, Icon, Button, Dropdown, Menu, InputNumber, DatePicker, Modal, message, Badge, Divider } from 'antd';
 import PageHeaderLayout from '../../layouts/PageHeaderLayout';
+import FooterToolbar from '../../components/FooterToolbar';
 
 import styles from './NewUser.less';
 
@@ -9,27 +10,27 @@ const FormItem = Form.Item;
 
 @connect(({ loading }) => ({
     submitting: loading.effects['form/submitRegularForm'],
-  }))
+}))
 @Form.create()
 export default class NewUser extends PureComponent {
     handleSubmit = (e) => {
         e.preventDefault();
         this.props.form.validateFieldsAndScroll((err, values) => {
-          if (!err) {
-            this.props.dispatch({
-              type: 'form/submitRegularForm',
-              payload: values,
-            });
-          }
+            if (!err) {
+                this.props.dispatch({
+                    type: 'form/submitRegularForm',
+                    payload: values,
+                });
+            }
         });
-      }
-    
+    }
+
     render() {
 
         const { submitting } = this.props;
 
         const { getFieldDecorator } = this.props.form;
-        
+
         const formItemLayout = {
             labelCol: { span: 6 },
             wrapperCol: { span: 14 },
@@ -38,7 +39,7 @@ export default class NewUser extends PureComponent {
         const submitFormLayout = {
             wrapperCol: {
                 xs: { span: 24, offset: 0 },
-                sm: { span: 10, offset: 7 },
+                sm: { span: 24, offset: 0 },
             },
         };
 
@@ -70,15 +71,15 @@ export default class NewUser extends PureComponent {
                             })(
                                 <Input placeholder="" type="phone" />
                             )}
-                        </FormItem>
-                        <FormItem {...submitFormLayout} style={{ marginTop: 32 }}>
-                            <Button type="primary" htmlType="submit" loading={submitting}>
-                                保存
-                            </Button>
-                            <Button style={{ marginLeft: 8 }}>取消</Button>
-                        </FormItem>
+                        </FormItem>                    
                     </Form>
                 </Card>
+                <FooterToolbar >                    
+                    <Button type="primary" htmlType="submit" loading={submitting}>
+                        提交
+                    </Button>
+                    <Button style={{ marginLeft: 8 }}>取消</Button>
+                </FooterToolbar>
             </PageHeaderLayout>
         );
     }
