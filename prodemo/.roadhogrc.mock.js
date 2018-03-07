@@ -29,6 +29,16 @@ const proxy = {
       notifyCount: 12,
     },
   },
+  'GET /api/currentUserInfo':{
+      $desc:"获取当前用户详细信息",
+      $body:{
+        userid:'001111',
+        name:'张三',
+        CompanyName:"河南省公司",
+        Email:"henana@mail.com",
+        Img:"https://goo.gl/images/gM8qNa"
+      }      
+  },
   // GET POST 可省略
   'GET /api/users': [{
     key: '1',

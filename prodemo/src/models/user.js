@@ -6,6 +6,7 @@ export default {
   state: {
     list: [],
     currentUser: {},
+    currentUserInfo:{}
   },
 
   effects: {
@@ -23,6 +24,13 @@ export default {
         payload: response,
       });
     },
+    *fetchCurrentInfo(_,{call,put}){
+      const response = yield call(queryCurrentInfo);
+      yield put({
+        type:'saveCurrentUserInfo',
+        payload:response,
+      });
+    }
   },
 
   reducers: {
@@ -47,5 +55,11 @@ export default {
         },
       };
     },
+    saveCurrentUserInfo(state,action){
+      return{
+        ...state,
+        currentUserInfo:action.payload                
+      }
+    }
   },
 };

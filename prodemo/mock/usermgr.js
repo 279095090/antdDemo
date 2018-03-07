@@ -2,18 +2,20 @@ import { parse } from 'url';
 
 let namArr = ['零', '壹', '贰', '叁', '肆', '伍', '陆', '柒', '捌', '玖'];
 let statusArr = ['normal', 'disable'];
+let companyNames=['河南','河北','内蒙古','北京','天津'];
 // mock UserListDataSource
 let UserListDataSource = [];
 for (let i = 0; i < 46; i += 1) {
   UserListDataSource.push({
     key: i,
     userName:'张'+namArr[Math.floor(Math.random() * 10)],       
-    uesrCode: Math.floor(Math.random() * 1000),
+    userCode: Math.floor(Math.random() * 1000),
     status: Math.floor(Math.random() * 10) % 4,
     phone:'0000000000',
     updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
     createdAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
-    status: statusArr[Math.ceil(Math.random() * 10 % 2)],
+    companyName:companyNames[Math.ceil(Math.random() * 10) % companyNames.length],
+    status: statusArr[Math.ceil(Math.random() * 10) % 2],
   });
 }
 
