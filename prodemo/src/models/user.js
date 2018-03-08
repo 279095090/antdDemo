@@ -1,4 +1,4 @@
-import { query as queryUsers, queryCurrent } from '../services/user';
+import { query as queryUsers, queryCurrent,queryCurrentInfo } from '../services/user';
 
 export default {
   namespace: 'user',
@@ -56,6 +56,7 @@ export default {
       };
     },
     saveCurrentUserInfo(state,action){
+      console.log(`state:${JSON.stringify(state)},action->${JSON.stringify(action)}`);
       return{
         ...state,
         currentUserInfo:action.payload                

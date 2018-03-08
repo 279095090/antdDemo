@@ -137,6 +137,14 @@ class MyBasicLayout extends React.PureComponent {
         type: 'login/logout',
       });
     }
+    if (key === 'usercenter') {
+      this.props.dispatch(routerRedux.push('/usercenter/profile'));
+      return;
+    }
+    if (key === 'triggerError') {
+      this.props.dispatch(routerRedux.push('/exception/trigger'));
+      return;
+    }
   }
   handleNoticeVisibleChange = (visible) => {
     if (visible) {
@@ -164,6 +172,7 @@ class MyBasicLayout extends React.PureComponent {
           // 不带Authorized参数的情况下如果没有权限,会强制跳到403界面
           // If you do not have the Authorized parameter
           // you will be forced to jump to the 403 interface without permission
+          title={config.Title}
           Authorized={Authorized}
           menuData={getMenuData()}
           collapsed={collapsed}
@@ -174,7 +183,8 @@ class MyBasicLayout extends React.PureComponent {
         <Layout>
           <Header style={{ padding: 0 }}>
             <GlobalHeader
-              logo={logo1}
+              logo={config.Logo}
+              title={config.Title}
               currentUser={currentUser}
               fetchingNotices={fetchingNotices}
               notices={notices}
@@ -221,7 +231,7 @@ class MyBasicLayout extends React.PureComponent {
     );
 
     return (
-      <DocumentTitle title={this.getPageTitle()}>
+      <DocumentTitle title={config.Title}>
         <ContainerQuery query={query}>
           {params => <div className={classNames(params)}>{layout}</div>}
         </ContainerQuery>

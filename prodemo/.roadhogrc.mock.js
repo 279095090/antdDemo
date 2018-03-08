@@ -23,8 +23,8 @@ const proxy = {
       },
     },
     $body: {
-      name: 'Serati Ma',
-      avatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+      name: '李孝利',
+      avatar: 'https://s1.ax1x.com/2018/03/08/92lV4s.png',
       userid: '00000001',
       notifyCount: 12,
     },
@@ -34,9 +34,9 @@ const proxy = {
       $body:{
         userid:'001111',
         name:'张三',
-        CompanyName:"河南省公司",
-        Email:"henana@mail.com",
-        Img:"https://goo.gl/images/gM8qNa"
+        companyName:"石化盈科信息技术有限责任公司 - 互联网及油品销售业务部",
+        email:"henana@mail.com",
+        avatar:"https://s1.ax1x.com/2018/03/08/92lV4s.png"
       }      
   },
   // GET POST 可省略
