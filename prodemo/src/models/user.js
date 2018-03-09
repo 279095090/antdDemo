@@ -56,7 +56,6 @@ export default {
       };
     },
     saveCurrentUserInfo(state,action){
-      console.log(`state:${JSON.stringify(state)},action->${JSON.stringify(action)}`);
       return{
         ...state,
         currentUserInfo:action.payload                
