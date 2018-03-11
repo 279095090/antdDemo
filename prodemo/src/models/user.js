@@ -1,4 +1,4 @@
-import { query as queryUsers, queryCurrent,queryCurrentInfo } from '../services/user';
+import { query as queryUsers, queryCurrent,queryCurrentInfo,saveCurrentUserInfo } from '../services/user';
 
 export default {
   namespace: 'user',
@@ -27,7 +27,15 @@ export default {
     *fetchCurrentInfo(_,{call,put}){
       const response = yield call(queryCurrentInfo);
       yield put({
-        type:'saveCurrentUserInfo',
+        type:'sSaveCurrentUserInfo',
+        payload:response,
+      });
+    },
+    *aChangeCurrentUserInfo({payload},{call,put}){
+      debugger
+      const response = yield call(saveCurrentUserInfo,payload);
+      yield put({
+        type:'sSaveCurrentUserInfo',
         payload:response,
       });
     }
@@ -43,7 +51,7 @@ export default {
     saveCurrentUser(state, action) {
       return {
         ...state,
-        currentUser: action.payload,
+        currentUser: action.payload.data,
       };
     },
     changeNotifyCount(state, action) {
@@ -55,10 +63,10 @@ export default {
         },
       };
     },
-    saveCurrentUserInfo(state,action){
+    sSaveCurrentUserInfo(state,action){
       return{
         ...state,
-        currentUserInfo:action.payload                
+        currentUserInfo:action.payload.data             
       }
     }
   },

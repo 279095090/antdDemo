@@ -23,20 +23,39 @@ const proxy = {
       },
     },
     $body: {
-      name: '李孝利',
-      avatar: 'https://s1.ax1x.com/2018/03/08/92lV4s.png',
-      userid: '00000001',
-      notifyCount: 12,
+      status:1,
+      data:{      
+        name: '李孝利',
+        avatar: 'https://s1.ax1x.com/2018/03/08/92lV4s.png',
+        userid: '00000001',
+        notifyCount: 12,
+      }
     },
   },
-  'GET /api/currentUserInfo':{
-      $desc:"获取当前用户详细信息",
-      $body:{
+  'POST /api/saveCurrentUserInfo':{
+    $desc: "修改当前用户信息接口",    
+    $body: {
+      status:1,
+      data:{
         userid:'001111',
         name:'张三',
         companyName:"石化盈科信息技术有限责任公司 - 互联网及油品销售业务部",
         email:"henana@mail.com",
         avatar:"https://s1.ax1x.com/2018/03/08/92lV4s.png"
+      }
+    },
+  },
+  'GET /api/currentUserInfo':{
+      $desc:"获取当前用户详细信息",
+      $body:{
+        status:1,
+        data:{
+          userid:'001111',
+          name:'张三',
+          companyName:"石化盈科信息技术有限责任公司 - 互联网及油品销售业务部",
+          email:"henana@mail.com",
+          avatar:"https://s1.ax1x.com/2018/03/08/92lV4s.png"
+        }
       }      
   },
   // GET POST 可省略

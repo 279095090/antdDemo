@@ -11,7 +11,8 @@ const FormItem = Form.Item;
 
 @connect(({ user, loading }) => ({
     userInfo: user.currentUserInfo,
-    loading: loading.effects['user/fetchCurrentInfo']
+    loading: loading.effects['user/fetchCurrentInfo'],
+    submitting: loading.effects['user/aChangeCurrentUserInfo'],
 }))
 @Form.create()
 export default class UserProfile extends PureComponent {
@@ -22,6 +23,7 @@ export default class UserProfile extends PureComponent {
     state={
         avatar:null,
     }
+
     componentWillReceiveProps(nextProps){
         this.setState({avatar:nextProps.userInfo.avatar});
     }
@@ -45,8 +47,21 @@ export default class UserProfile extends PureComponent {
         reader.readAsDataURL(file);        
     }
 
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.props.form.validateFieldsAndScroll((err, values) => {
+          const vals = Object.assign(values,{avatar:this.state.avatar});
+          if (!err) {
+            this.props.dispatch({
+              type: 'user/aChangeCurrentUserInfo',
+              payload: vals,
+            });
+          }
+        });
+      }
+    
     render() {        
-        const { userInfo, form } = this.props;        
+        const { userInfo, form ,submitting } = this.props;        
         const { getFieldDecorator, validateFields } = form;
         const leftside = {
             xs: { span: 8 }
@@ -56,7 +71,6 @@ export default class UserProfile extends PureComponent {
         };
         return (
             <div className={styles.main}>
-
                 <Row gutter={16}>
                     <Col {...leftside}>
                         <div className={styles.mycard} style={{ marginRight: '-24px', paddingTop: '48px' }}>
@@ -77,7 +91,10 @@ export default class UserProfile extends PureComponent {
                     </Col>
                     <Col {...rightside}>
                         <div className={styles.mycard}>
-                            <Form>
+                            <Form 
+                                onSubmit={this.handleSubmit}
+                                hideRequiredMark
+                            >
                                 <FormItem label="用户名">
                                     {getFieldDecorator('name',
                                         {
@@ -108,7 +125,7 @@ export default class UserProfile extends PureComponent {
                                         )}
                                 </FormItem>
                                 <FormItem>
-                                    <Button type="primary" size="large">保存</Button>
+                                    <Button type="primary" size="large"  htmlType="submit" loading={submitting}>保存</Button>
                                 </FormItem>
                             </Form>
                         </div>
