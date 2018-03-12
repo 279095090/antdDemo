@@ -14,7 +14,6 @@ import NotFound from '../routes/Exception/404';
 import { getRoutes } from '../utils/utils';
 import Authorized from '../utils/Authorized';
 import { getMenuData } from '../common/menu';
-import logo1 from '../assets/logo.svg'
 import config from '../config'
 
 const { Content, Header, Footer } = Layout;

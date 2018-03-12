@@ -1,8 +1,7 @@
-import img from './assets/logo.svg';
-
+const G =  window.g;
 const config ={
-    Title:'Scm',
-    Logo:img,
+    Title:G.title,
+    Logo:G.logo,
 }
 
 export default config;
