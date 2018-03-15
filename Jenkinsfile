@@ -1,5 +1,10 @@
 pipeline {
-  agent none
+  agent {
+    node {
+      label 'node'
+    }
+    
+  }
   stages {
     stage('installpgk') {
       steps {
