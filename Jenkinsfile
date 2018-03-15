@@ -1,15 +1,19 @@
 pipeline {
   agent any
   stages {
+    stage('Change to workspace'){
+      steps{
+        dir('./prodemo')
+      }
+    }
     stage('installpgk') {
       steps {
-        sh 'npm config set registry http://registry.npm.taobao.org/'
-        sh 'cd ./prodemo && npm install'
+        sh 'npm install'
       }
     }
     stage('test') {
       steps {
-        sh 'cd ./prodemo && npm test'
+        sh 'npm test'
       }
     }
   }
