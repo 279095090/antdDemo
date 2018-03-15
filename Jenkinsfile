@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('installpgk') {
       steps {
-        sh 'cd ./prodemo && cnpm install'
+        sh 'cd ./prodemo && npm install'
       }
     }
     stage('test') {
