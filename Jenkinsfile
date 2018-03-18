@@ -1,15 +1,15 @@
 pipeline {
   agent any
   stages {
-    stage('installpgk'){
-      steps{
-        dir('./prodemo')
-        sh 'npm install'
+    stage('installpgk') {
+      steps {
+        dir(path: './prodemo')
+        sh 'cnpm install'
       }
-    }   
+    }
     stage('test') {
       steps {
-        sh 'npm test'  
+        sh 'cnpm test'
       }
     }
   }
