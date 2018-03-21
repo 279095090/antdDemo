@@ -75,7 +75,7 @@ export default function request(url, options) {
     })
     .catch((e) => {
       const { dispatch } = store;
-      const status = e.name;
+      const status = Number(e.name);
       if (status === 401) {
         dispatch({
           type: 'login/logout',
